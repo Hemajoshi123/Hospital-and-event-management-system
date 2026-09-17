@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS hospital_event_db;
+USE hospital_event_db;
+CREATE TABLE admins(id INT AUTO_INCREMENT PRIMARY KEY,username VARCHAR(50),password VARCHAR(255),email VARCHAR(150) UNIQUE,phone VARCHAR(20));
+INSERT INTO admins(username,password,email,phone) VALUES('Hemu','Hemu123','hemajoshi6665@gmail.com','9800000000');
+CREATE TABLE doctors(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(100),specialization VARCHAR(100),phone VARCHAR(20));
+CREATE TABLE staff(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(100),role VARCHAR(50),phone VARCHAR(20));
+CREATE TABLE patients(id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(100),gender VARCHAR(10),dob DATE,phone VARCHAR(20),address TEXT,username VARCHAR(50) UNIQUE,password VARCHAR(255));
+CREATE TABLE beds(id INT AUTO_INCREMENT PRIMARY KEY,bed_no VARCHAR(20),ward VARCHAR(50),status VARCHAR(20),patient_id INT NULL);
+CREATE TABLE appointments(id INT AUTO_INCREMENT PRIMARY KEY,patient_id INT,doctor_id INT,appointment_date DATE,status VARCHAR(30));
+CREATE TABLE billing(id INT AUTO_INCREMENT PRIMARY KEY,patient_id INT,amount DECIMAL(10,2),bill_date DATE);
+CREATE TABLE events(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(150),event_date DATE,venue VARCHAR(100),organizer VARCHAR(100));
+CREATE TABLE participants(id INT AUTO_INCREMENT PRIMARY KEY,event_id INT,name VARCHAR(100),phone VARCHAR(20));
+CREATE TABLE attendance(id INT AUTO_INCREMENT PRIMARY KEY,participant_id INT,event_id INT,status VARCHAR(20));
